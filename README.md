@@ -1,12 +1,11 @@
-Pre-processing
-
+PRE-PROCESSING
 1. The master file which was downloaded from the Adversarial Nibbler Dataset. All rounds have been compiled together into one large file. Then it is deduplicated using dedup-comprehensive.py
 
 2. The indices are split based on the failure mode annotations provided by participants using split_indices_into_failure_modes.py
 
 3. In order to subsample, we first select 250 prompts from the hate folder (category with the least number of annotations - select_pids_unique_users.py). Then we recursively  select 250 prompts for each of the other categories (bias, hate, sexual, violent) - after_hate_select_others.py. This generates 4 .json files containing the indices that we will use for our experiments: violent_selected_pids.json, sexual_selected_pids.json, hate_selected_pids.json, bias_selected_pids.json. 
 
-Automated Prompt Generation 
+PROMPT GENERATION
 1. There are 3 different techniques that we implement and evaluate:
 - From Seed to Harvest Hybrid (provide both seed prompt and attack strategy guidance to model)
 - Attack Only Strategy (provide only direction on attack strategy but no seed prompt)
@@ -20,10 +19,12 @@ The code pertaining to each of these techniques will be stored in a folder with 
 
 4. For each original prompt, we combine all the responses from the different LLMs and select the 4 most diverse prompts for use in our experiments - [neurips] combine_and_select_top_4_responses.ipynb. 
 
-Image Generation 
+IMAGE GENERATION
+
 With our "image-generation-ready" prompts, we generate images using the following T2I models - DALL-E 2, Stable Diffusion (SD) VAE, SD 1.5, SD XL, SD XL Turbo. We streamlined all the stable diffusion calls through one python file [] and multiple .sh files []. The DALL-E generations also take place on a remote cluster in [].
 
-Evaluation 
+EVALUATION
+
 1. Image Safety Classification
 Upon completion, each of the images are put through the 
 NudeNet Classifier - nudenet_detector.py
