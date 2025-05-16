@@ -76,7 +76,7 @@ Example script names:
 
 Using the finalized prompts, images are generated with the following Text-to-Image (T2I) models:
 
-* **DALL·E 2** (executed remotely on cluster)
+* **DALL·E 2** : Executed in a Python script called `generate_dalle_imgs.py` with supporting shell script `run_dalle_[failure_category].sh` where failure_category = (bias, hate, sexual, violent) and sd_model.
 * **Stable Diffusion Variants:**
 
   * SD VAE
@@ -86,7 +86,7 @@ Using the finalized prompts, images are generated with the following Text-to-Ima
 
 Stable Diffusion models are run using a unified Python script and supporting shell scripts:
 
-* `[script location here]`
+* `generate_sd_imgs.py`, `run_[failure_category]-[sd_model].sh` where failure_category = (bias, hate, sexual, violent) and sd_model = (sdv1-5, sdvae, sd-xl,sdxl-turbo).
 
 ---
 
@@ -118,4 +118,6 @@ Evaluation script:
 
 ## 📄 Citation & Acknowledgments
 
-If you use this pipeline or dataset in your research, please cite the original Adversarial Nibbler Dataset publication.
+If you use this pipeline or dataset in your research, please cite the original Adversarial Nibbler Dataset publication: 
+
+Quaye, Jessica, Alicia Parrish, Oana Inel, Charvi Rastogi, Hannah Rose Kirk, Minsuk Kahng, Erin Van Liemt et al. "Adversarial nibbler: An open red-teaming method for identifying diverse harms in text-to-image generation." _In Proceedings of the 2024 ACM Conference on Fairness, Accountability, and Transparency_, pp. 388-406. 2024.
